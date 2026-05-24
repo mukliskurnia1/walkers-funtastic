@@ -10,6 +10,17 @@
     </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbwPFpsX5sIDio2TMH6FkMgRSnGrUvGA-wVu6lmc-MQAM600GVdBrRpJ3lAUD0DZ8dp2/exec"></iframe>
+    <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbwPFpsX5sIDio2TMH6FkMgRSnGrUvGA-wVu6lmc-MQAM600GVdBrRpJ3lAUD0DZ8dp2/exec"></iframe>
+
+    <script>
+        // Tangkap teks '?page=admin' dari URL browser saat ini
+        var queryString = window.location.search;
+        
+        // Jika ada parameter, tambahkan ke link iframe Google Script
+        if (queryString) {
+            var iframe = document.getElementById('appFrame');
+            iframe.src = iframe.src + queryString;
+        }
+    </script>
 </body>
 </html>
