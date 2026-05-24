@@ -10,17 +10,23 @@
     </style>
 </head>
 <body>
-    <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbwPFpsX5sIDio2TMH6FkMgRSnGrUvGA-wVu6lmc-MQAM600GVdBrRpJ3lAUD0DZ8dp2/exec"></iframe>
+    <iframe id="gas-iframe" src=""></iframe>
 
     <script>
-        // Tangkap teks '?page=admin' dari URL browser saat ini
-        var queryString = window.location.search;
+        // Menangkap parameter dari URL domain Anda
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.get('page');
         
-        // Jika ada parameter, tambahkan ke link iframe Google Script
-        if (queryString) {
-            var iframe = document.getElementById('appFrame');
-            iframe.src = iframe.src + queryString;
+        // Link asli Google Script Anda
+        let scriptUrl = "https://script.google.com/macros/s/AKfycbwPFpsX5sIDio2TMH6FkMgRSnGrUvGA-wVu6lmc-MQAM600GVdBrRpJ3lAUD0DZ8dp2/exec";
+        
+        // Jika ada parameter ?page=admin, tambahkan ke link script
+        if (page) {
+            scriptUrl += "?page=" + page;
         }
+        
+        // Terapkan ke Iframe
+        document.getElementById('gas-iframe').src = scriptUrl;
     </script>
 </body>
 </html>
